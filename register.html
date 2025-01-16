@@ -1,0 +1,126 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add new Customer</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/addew.css">
+</head>
+<body>
+    
+    <div class="container">
+        <h1> Register </h1>
+        <!<h2> Add Customer</h2> -->
+        <!-- <div class="mb-3">
+            <label class="form-label">Email:</label>
+            <input type="email" class="form-control" id="email" placeholder="Enter email">
+          </div>
+        
+        <div class="mb-3">
+            <label  class="form-label">Password:</label>
+            <input type="password" class="form-control" id="password" placeholder="Password">
+          </div>
+        <div class="mb-3">
+            <label class="form-label">Confirm Password:</label>
+            <input type="password" class="form-control" id="ConfirmPasswword" placeholder="Confirm Password">
+          </div>
+          <div style="text-align: center;">
+             <button type="submit" class="btn btn-success">Success</button>
+          </div>
+         <div style="float: right;">
+            <a href="index.html">Go to login</a>
+         </div> 
+           
+    </div>
+   <script>
+   
+   </script> 
+</body>
+</html> --> 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add new Customer</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/addew.css">
+</head>
+<body>
+    
+    <div class="container">
+        <h1> Register </h1>
+        <!-- <h2> Add Customer</h2> -->
+        <div class="mb-3">
+            <label class="form-label">Email:</label>
+            <input type="email" class="form-control" id="email" placeholder="Enter email">
+        </div>
+        
+        <div class="mb-3">
+            <label class="form-label">Password:</label>
+            <input type="password" class="form-control" id="password" placeholder="Password">
+        </div>
+        
+        <div class="mb-3">
+            <label class="form-label">Confirm Password:</label>
+            <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm Password">
+        </div>
+
+        <div style="text-align: center;">
+            <button type="submit" class="btn btn-success" id="registerBtn">Register</button>
+        </div>
+        
+        <div style="float: right;">
+            <a href="index.html">Go to login</a>
+        </div> 
+           
+    </div>
+
+    <script>
+        // Event listener for Register button
+        document.getElementById('registerBtn').addEventListener('click', function(event) {
+            event.preventDefault();
+            
+            // Get form data
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value.trim();
+            const confirmPassword = document.getElementById('confirmPassword').value.trim();
+
+            // Validate fields
+            if (email === "" || password === "" || confirmPassword === "") {
+                alert("Please fill in all fields.");
+                return;
+            }
+
+            // Check if passwords match
+            if (password !== confirmPassword) {
+                alert("Passwords do not match.");
+                return;
+            }
+
+            // Check if email already exists in localStorage
+            let users = JSON.parse(localStorage.getItem('users')) || [];
+            const userExists = users.some(user => user.email === email);
+            if (userExists) {
+                alert("User already exists.");
+                return;
+            }
+
+            // Save new user to localStorage
+            const newUser = {
+                email: email,
+                password: password
+            };
+            users.push(newUser);
+            localStorage.setItem('users', JSON.stringify(users));
+
+            alert("Registration successful!");
+
+            // Redirect to login page after registration
+            window.location.href = "index.html";
+        });
+    </script>
+
+</body>
+</html>
